@@ -15,6 +15,7 @@ Student::Student(int id, string name, string password)
 	this->name = name;
 	this->password = password;
 
+	this->initStudent();
 }
 
 //学生菜单页面
@@ -59,5 +60,24 @@ void Student::showAllOlder()
 // 取消预约-- - 取消自身的预约，预约成功或审核中的预约均可取消
 void Student::cancelOlder()
 {
+
+}
+
+
+//初始化容器
+void Student::initStudent()
+{
+	ifstream ifs;
+	ifs.open(COMPUTER_FILE, ios::in);
+
+	this->vCom.clear();
+
+	ComputerRoom c;
+	while (ifs >> c.roomId && ifs >> c.maxNum)
+	{
+		this->vCom.push_back(c);
+	}
+
+	ifs.close();
 
 }

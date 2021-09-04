@@ -1,6 +1,11 @@
 #pragma once
 #include "identity.h"
+#include <vector>
+#include "computerRoom.h"
+#include "globalFile.h"
+#include "computerRoom.h"
 #include <iostream>
+#include <fstream>
 
 class Student :public Identity
 {
@@ -29,5 +34,12 @@ public:
 
 	// 取消预约-- - 取消自身的预约，预约成功或审核中的预约均可取消
 	void cancelOlder();
+
+public:
+	//获取机房信息
+	vector<ComputerRoom> vCom;
+
+	//初始化容器
+	void initStudent();
 
 };
