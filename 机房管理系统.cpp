@@ -146,6 +146,7 @@ void loginIn(const string fileName, int type)
 				system("pause");
 				system("cls");
 				person = new Student(fId, fName, fPassword);
+				studentMenu(person);
 				return;
 			}
 		}
