@@ -95,8 +95,27 @@ OlderFile::OlderFile()
 
 }
 
-//添加older
+//将older重写入文件
 void OlderFile::upDateOlder()
 {
 
+	if (this->size == 0)
+	{
+		return;
+	}
+
+	ofstream ofs(OLDER_FILE, ios::out);
+
+	for (int i = 0; i < this->size; i++)
+	{
+		ofs << "date:" << this->older[i]["date"] << " ";
+		ofs << "interval:" << this->older[i]["interval"] << " ";
+		ofs << "stuId:" << this->older[i]["stuId"] << " ";
+		ofs << "stuName:" << this->older[i]["stuName"] << " ";
+		ofs << "roomId:" << this->older[i]["roomId"] << " ";
+		ofs << "status:" << this->older[i]["status"] << endl;
+	}
+
+	ofs.close();
+	return;
 }
