@@ -120,7 +120,7 @@ void Student::applyOlder()
 // 查看自身的预约-- - 查看自己的预约状态
 void Student::showMyOlder()
 {
-
+	OlderFile of;
 }
 
 // 查看所有预约-- - 查看全部预约信息以及预约状态
