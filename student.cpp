@@ -221,6 +221,83 @@ void Student::showAllOlder()
 // 取消预约-- - 取消自身的预约，预约成功或审核中的预约均可取消
 void Student::cancelOlder()
 {
+	OlderFile of;
+
+	if (of.size==0)
+	{
+		cout << "无预约记录" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
+
+	cout << "请选择要取消的预约。0表示返回。" << endl;
+	
+	vector<int>v;
+	int index = 1;
+	for (int i = 0; i < of.size; i++)
+	{
+		if (this->studentId == atoi(of.older[i]["stuId"].c_str()))
+		{
+			if (atoi(of.older[i]["status"].c_str()) == 1 || atoi(of.older[i]["status"].c_str()) == 2)
+			{
+				v.push_back(i);
+				cout << index++ << " ";
+				cout << "本周" << of.older[i]["date"] << " ";
+				cout << "时间段:" << (of.older[i]["interval"] == "1" ? "上午" : "下午") << " ";
+				cout << "预约人id:" << of.older[i]["stuId"] << " ";
+				cout << "预约人:" << of.older[i]["stuName"] << " ";
+				cout << "预约机房号:" << of.older[i]["roomId"] << " ";
+
+				string status = "状态";
+				if (of.older[i]["status"] == "1")
+				{
+					status += "审核中";
+				}
+				else if (of.older[i]["status"] == "2")
+				{
+					status += "预约成功";
+				}
+
+				cout << status << endl;
+
+			}
+			
+		}
+
+	}
+
+	int select;
+	while (true)
+	{
+		cin >> select;
+		if (select >= 0 && select <= v.size())
+		{
+			if (select == 0)
+			{
+				system("cls");
+				break;
+			}
+			else
+			{
+				of.older[v[select - 1]]["status"] = "0";
+				cout << "取消预约成功" << endl;
+				of.upDateOlder();
+				system("cls");
+				break;
+			}
+		}
+		else
+		{
+			cout << "选择有误，任意键退出" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
+	}
+
+	
 
 }
 
