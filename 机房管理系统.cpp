@@ -92,6 +92,40 @@ void studentMenu(Identity*& student)
 
 }
 
+
+//老师子菜单
+void teacherMenu(Identity*& teacher)
+{
+
+	while (true)
+	{
+		teacher->operMenu();
+		Teacher* tea = (Teacher*)teacher;
+
+		int select;
+		cin >> select;
+		switch (select)
+		{
+		case 1:
+			//查看全部预约
+			tea->showAllOlder();
+			break;
+		case 2:
+			//审核预约
+			tea->auditOlder();
+			break;
+		default:
+			//0.注销登录 
+			delete teacher;
+			cout << "注销成功" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
+	}
+
+}
+
 //登录验证
 void loginIn(const string fileName, int type)
 {
