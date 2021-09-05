@@ -207,7 +207,6 @@ void loginIn(const string fileName, int type)
 				teacherMenu(person);
 				return;
 			}
-
 		}
 	}
 	else if (type == MANAGER_TYPE)
