@@ -2,6 +2,7 @@
 #include "identity.h"
 #include "globalFile.h"
 #include "olderFile.h"
+#include <vector>
 #include <iostream>
 #include <fstream>
 

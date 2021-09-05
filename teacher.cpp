@@ -83,5 +83,85 @@ void Teacher::showAllOlder()
 // 审核预约
 void Teacher::auditOlder()
 {
+	OlderFile of;
 
+	if (of.size == 0)
+	{
+		cout << "无预约记录" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
+
+	cout << "请选择要审核的预约：（0为返回）" << endl;
+
+	vector<int>v;
+	int index = 1;
+	for (int i = 0; i < of.size; i++)
+	{
+		if (atoi(of.older[i]["status"].c_str()) == 1)
+		{
+			v.push_back(i);
+			cout << index++ << " ";
+			cout << "本周" << of.older[i]["date"] << " ";
+			cout << "时间段:" << (of.older[i]["interval"] == "1" ? "上午" : "下午") << " ";
+			cout << "预约人id:" << of.older[i]["stuId"] << " ";
+			cout << "预约人:" << of.older[i]["stuName"] << " ";
+			cout << "预约机房号:" << of.older[i]["roomId"] << " ";
+
+			string status = "状态";
+			if (of.older[i]["status"] == "1")
+			{
+				status += "审核中";
+			}
+			cout << status << endl;
+
+		}
+
+	}
+
+	int select;
+	int ret;
+	while (true)
+	{
+		cin >> select;
+		if (select >= 0 && select <= v.size())
+		{
+			if (select == 0)
+			{
+				system("cls");
+				break;
+			}
+			else
+			{
+				cout << "请选择是否通过预约：" << endl;
+				cout << "1.通过" << "\n2.驳回" << endl;
+				cin >> ret;
+
+				if (ret == 1)
+				{
+					of.older[v[select - 1]]["status"] = "2";
+					cout << "已通过" << endl;
+				}
+				else
+				{
+					of.older[v[select - 1]]["status"] = "-1";
+					cout << "已驳回" << endl;
+				}
+				of.upDateOlder();
+				system("cls");
+				break;
+			}
+		}
+		else
+		{
+			cout << "选择有误，任意键退出" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
+	}
+
+	return;
 }
