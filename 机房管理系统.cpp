@@ -204,6 +204,7 @@ void loginIn(const string fileName, int type)
 				system("pause");
 				system("cls");
 				person = new Teacher(fId, fName, fPassword);
+				teacherMenu(person);
 				return;
 			}
 

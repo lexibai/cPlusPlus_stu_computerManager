@@ -1,5 +1,9 @@
 #pragma once
 #include "identity.h"
+#include "globalFile.h"
+#include "olderFile.h"
+#include <iostream>
+#include <fstream>
 
 class Teacher :public Identity
 {
