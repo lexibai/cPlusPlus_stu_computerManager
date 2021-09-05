@@ -191,7 +191,7 @@ void Student::showAllOlder()
 		cout << "预约人:" << of.older[i]["stuName"] << " ";
 		cout << "预约机房号:" << of.older[i]["roomId"] << " ";
 
-		string status = "状态";
+		string status = "状态：";
 		if (of.older[i]["status"] == "1")
 		{
 			status += "审核中";
